@@ -1,6 +1,6 @@
 <?php
 	return array(
-		'host'     => 'myshop',
+		'host'     => 'mvcshop',
 		'dbname'   => 'mvc_site',
 		'user'     => 'root',
 		'password' => '',

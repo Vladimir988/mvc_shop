@@ -2,10 +2,10 @@
 -- version 4.6.5.2
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1:3306
--- Generation Time: Nov 08, 2017 at 06:46 PM
--- Server version: 5.6.34
--- PHP Version: 5.6.29
+-- Хост: 127.0.0.1:3306
+-- Время создания: Ноя 10 2017 г., 00:04
+-- Версия сервера: 5.5.53
+-- Версия PHP: 5.5.38
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -17,13 +17,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `mvc_site`
+-- База данных: `mvc_site`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `category`
+-- Структура таблицы `category`
 --
 
 DROP TABLE IF EXISTS `category`;
@@ -35,7 +35,7 @@ CREATE TABLE `category` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `category`
+-- Дамп данных таблицы `category`
 --
 
 INSERT INTO `category` (`id`, `name`, `sort_order`, `status`) VALUES
@@ -52,7 +52,7 @@ INSERT INTO `category` (`id`, `name`, `sort_order`, `status`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `news`
+-- Структура таблицы `news`
 --
 
 DROP TABLE IF EXISTS `news`;
@@ -68,7 +68,7 @@ CREATE TABLE `news` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `news`
+-- Дамп данных таблицы `news`
 --
 
 INSERT INTO `news` (`id`, `title`, `date`, `short_content`, `content`, `author_name`, `preview`, `type`) VALUES
@@ -81,7 +81,7 @@ INSERT INTO `news` (`id`, `title`, `date`, `short_content`, `content`, `author_n
 -- --------------------------------------------------------
 
 --
--- Table structure for table `news_category`
+-- Структура таблицы `news_category`
 --
 
 DROP TABLE IF EXISTS `news_category`;
@@ -94,7 +94,7 @@ CREATE TABLE `news_category` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
 
 --
--- Dumping data for table `news_category`
+-- Дамп данных таблицы `news_category`
 --
 
 INSERT INTO `news_category` (`id`, `name`, `description`, `sort_order`, `status`) VALUES
@@ -112,7 +112,7 @@ INSERT INTO `news_category` (`id`, `name`, `description`, `sort_order`, `status`
 -- --------------------------------------------------------
 
 --
--- Table structure for table `product`
+-- Структура таблицы `product`
 --
 
 DROP TABLE IF EXISTS `product`;
@@ -132,7 +132,7 @@ CREATE TABLE `product` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
 
 --
--- Dumping data for table `product`
+-- Дамп данных таблицы `product`
 --
 
 INSERT INTO `product` (`id`, `name`, `category_id`, `code`, `price`, `availability`, `brand`, `image`, `description`, `is_new`, `is_recommended`, `status`) VALUES
@@ -162,58 +162,95 @@ INSERT INTO `product` (`id`, `name`, `category_id`, `code`, `price`, `availabili
 (24, 'Easy Polo Black Edition 3', 5, 116021237, 559, 2, 'Polo Black 23', '/template/images/home/product12.jpg', 'Разнообразный и богатый опыт постоянный количественный рост и сфера нашей активности требуют определения и уточнения направлений прогрессивного развития. Таким образом реализация намеченных плановых заданий требуют определения и уточнения форм развития. Повседневная практика показывает, что новая модель организационной деятельности способствует подготовки и реализации позиций, занимаемых участниками в отношении поставленных задач. Таким образом постоянное информационно-пропагандистское обеспечение нашей деятельности влечет за собой процесс внедрения и модернизации форм развития. Повседневная практика показывает, что новая модель организационной деятельности способствует подготовки и реализации позиций, занимаемых участниками в отношении поставленных задач. Таким образом постоянное информационно-пропагандистское обеспечение нашей деятельности влечет за собой процесс внедрения и модернизации форм развития. Повседневная практика показывает, что новая модель организационной деятельности способствует подготовки и реализации позиций, занимаемых участниками в отношении поставленных задач. Таким образом постоянное информационно-пропагандистское обеспечение нашей деятельности влечет за собой процесс внедрения и модернизации форм развития.', 1, 0, 1),
 (25, 'Easy Polo Black Edition', 6, 2360015, 139, 1, 'Polo Black', '/template/images/home/product6.jpg', 'Разнообразный и богатый опыт постоянный количественный рост и сфера нашей активности требуют определения и уточнения направлений прогрессивного развития. Таким образом реализация намеченных плановых заданий требуют определения и уточнения форм развития. Повседневная практика показывает, что новая модель организационной деятельности способствует подготовки и реализации позиций, занимаемых участниками в отношении поставленных задач. Таким образом постоянное информационно-пропагандистское обеспечение нашей деятельности влечет за собой процесс внедрения и модернизации форм развития. Повседневная практика показывает, что новая модель организационной деятельности способствует подготовки и реализации позиций, занимаемых участниками в отношении поставленных задач. Таким образом постоянное информационно-пропагандистское обеспечение нашей деятельности влечет за собой процесс внедрения и модернизации форм развития. Повседневная практика показывает, что новая модель организационной деятельности способствует подготовки и реализации позиций, занимаемых участниками в отношении поставленных задач. Таким образом постоянное информационно-пропагандистское обеспечение нашей деятельности влечет за собой процесс внедрения и модернизации форм развития.', 0, 0, 1);
 
+-- --------------------------------------------------------
+
 --
--- Indexes for dumped tables
+-- Структура таблицы `user`
+--
+
+DROP TABLE IF EXISTS `user`;
+CREATE TABLE `user` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Дамп данных таблицы `user`
+--
+
+INSERT INTO `user` (`id`, `name`, `email`, `password`) VALUES
+(1, 'vladimir', 'vladimir@v.v', '123456789'),
+(2, '123132', 'ss@d.sd', 'фывЫВФАЫ'),
+(3, '123132', 'ss@d.sd1', 'фывЫВФАЫ'),
+(4, '123132', 'ss@d.sd1q', 'фывЫВФАЫ'),
+(5, '123132', 'ss@d.sd1q1', 'фывЫВФАЫ'),
+(6, '123132', 'ss@d.sd1q11', 'фывЫВФАЫ');
+
+--
+-- Индексы сохранённых таблиц
 --
 
 --
--- Indexes for table `category`
+-- Индексы таблицы `category`
 --
 ALTER TABLE `category`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `news`
+-- Индексы таблицы `news`
 --
 ALTER TABLE `news`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `news_category`
+-- Индексы таблицы `news_category`
 --
 ALTER TABLE `news_category`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `product`
+-- Индексы таблицы `product`
 --
 ALTER TABLE `product`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- Индексы таблицы `user`
+--
+ALTER TABLE `user`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT для сохранённых таблиц
 --
 
 --
--- AUTO_INCREMENT for table `category`
+-- AUTO_INCREMENT для таблицы `category`
 --
 ALTER TABLE `category`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 --
--- AUTO_INCREMENT for table `news`
+-- AUTO_INCREMENT для таблицы `news`
 --
 ALTER TABLE `news`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
--- AUTO_INCREMENT for table `news_category`
+-- AUTO_INCREMENT для таблицы `news_category`
 --
 ALTER TABLE `news_category`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
--- AUTO_INCREMENT for table `product`
+-- AUTO_INCREMENT для таблицы `product`
 --
 ALTER TABLE `product`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+--
+-- AUTO_INCREMENT для таблицы `user`
+--
+ALTER TABLE `user`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

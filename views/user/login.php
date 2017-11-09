@@ -13,10 +13,6 @@
 						<h2>Регистрация на сайте</h2>
 						<form action="#" method="post">
 							<label>
-								<input type="text" name="name" placeholder="Имя:" value="<?php echo $name; ?>">
-								<span><?php if(isset($errors['name'])){echo $errors['name'];} ?></span>
-							</label>
-							<label>
 								<input type="email" name="email" placeholder="E-mail:" value="<?php echo $email; ?>">
 								<span>
 									<?php if(isset($errors['email'])){echo $errors['email'];} ?>

@@ -14,26 +14,65 @@ class UserController {
 
 			$errors = false;
 
-			if(User::checkName($name)) {
-				echo "<br>$name: ок!";
-			} else {
-				$errors['1'] = 'Имя не должно быть короче 5-ти символов';
+			if(!User::checkName($name)) {
+				$errors['name'] = 'Имя не должно быть короче 5-ти символов';
 			}
 
-			if(User::checkEmail($email)) {
-				echo "<br>$email: ок!";
-			} else {
-				$errors['2'] = 'Неправильный email';
+			if(!User::checkEmail($email)) {
+				$errors['email'] = 'Неправильный email';
 			}
 
-			if(User::checkPassword($password)) {
-				echo "<br>$password: ок!";
-			} else {
-				$errors['3'] = 'Пароль не должно быть короче 6-ти символов';
+			if(!User::checkPassword($password)) {
+				$errors['password'] = 'Пароль не должно быть короче 6-ти символов';
+			}
+
+			if(User::checkEmailExists($email)) {
+				$errors['emailExists'] = 'Такой email уже зарегистрирован!';
+			}
+
+			if($errors == false) {
+				// SAVE USER
+				$result = User::register($name, $email, $password);
 			}
 		}
 
 		require_once(ROOT . '/views/user/register.php');
+		return true;
+	}
+
+	public function actionLogin() {
+		$email = "";
+		$password = "";
+
+		if(isset($_POST['submit'])) {
+			$email = $_POST['email'];
+			$password = $_POST['password'];
+
+			$errors = false;
+
+			//Валидация полей
+			if(!User::checkEmail($email)) {
+				$errors['email'] = "Неправильный email!";
+			}
+			if(!User::checkEmail($password)) {
+				$errors['password'] = "Пароль не должно быть короче 6-ти символов!";
+			}
+
+			//Проверяем существует ли пользователь:
+			$userId = User::checkUserData($email, $password);
+
+			if($userId == false) {
+				// Если данные неправильные - показываем ошибку;
+				$errors['password'] = "Неправильные данные для входа на сайт!";
+			} else {
+				// Если данные правильные, запоминаем пользователя (сессия);
+				User::auth($userId);
+
+				// Перенаправляем пользователя в закрытую часть - кабинет;
+				header("Location: /cabinet/");
+			}
+		}
+		require_once(ROOT . '/views/user/login.php');
 		return true;
 	}
 }
