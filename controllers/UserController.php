@@ -63,7 +63,7 @@ class UserController {
 
 			if($userId == false) {
 				// Если данные неправильные - показываем ошибку;
-				$errors['password'] = "Неправильные данные для входа на сайт!";
+				$errors['login_error'] = "Неправильные данные для входа на сайт!";
 			} else {
 				// Если данные правильные, запоминаем пользователя (сессия);
 				User::auth($userId);
@@ -74,5 +74,13 @@ class UserController {
 		}
 		require_once(ROOT . '/views/user/login.php');
 		return true;
+	}
+
+	public function actionLogout() {
+
+		session_start();
+		unset($_SESSION["user"]);
+		header("Location: /");
+
 	}
 }

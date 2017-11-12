@@ -18,7 +18,7 @@ class News {
 			$newsItem = $result->fetch();
 
 			return $newsItem;
-
+			
 		}
 	}
 

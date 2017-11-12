@@ -2,10 +2,10 @@
 -- version 4.6.5.2
 -- https://www.phpmyadmin.net/
 --
--- Хост: 127.0.0.1:3306
--- Время создания: Ноя 10 2017 г., 00:04
--- Версия сервера: 5.5.53
--- Версия PHP: 5.5.38
+-- Host: 127.0.0.1:3306
+-- Generation Time: Nov 12, 2017 at 08:21 PM
+-- Server version: 5.5.53
+-- PHP Version: 5.5.38
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -17,13 +17,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- База данных: `mvc_site`
+-- Database: `mvc_site`
 --
 
 -- --------------------------------------------------------
 
 --
--- Структура таблицы `category`
+-- Table structure for table `category`
 --
 
 DROP TABLE IF EXISTS `category`;
@@ -35,7 +35,7 @@ CREATE TABLE `category` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Дамп данных таблицы `category`
+-- Dumping data for table `category`
 --
 
 INSERT INTO `category` (`id`, `name`, `sort_order`, `status`) VALUES
@@ -52,7 +52,7 @@ INSERT INTO `category` (`id`, `name`, `sort_order`, `status`) VALUES
 -- --------------------------------------------------------
 
 --
--- Структура таблицы `news`
+-- Table structure for table `news`
 --
 
 DROP TABLE IF EXISTS `news`;
@@ -68,7 +68,7 @@ CREATE TABLE `news` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Дамп данных таблицы `news`
+-- Dumping data for table `news`
 --
 
 INSERT INTO `news` (`id`, `title`, `date`, `short_content`, `content`, `author_name`, `preview`, `type`) VALUES
@@ -81,7 +81,7 @@ INSERT INTO `news` (`id`, `title`, `date`, `short_content`, `content`, `author_n
 -- --------------------------------------------------------
 
 --
--- Структура таблицы `news_category`
+-- Table structure for table `news_category`
 --
 
 DROP TABLE IF EXISTS `news_category`;
@@ -94,7 +94,7 @@ CREATE TABLE `news_category` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
 
 --
--- Дамп данных таблицы `news_category`
+-- Dumping data for table `news_category`
 --
 
 INSERT INTO `news_category` (`id`, `name`, `description`, `sort_order`, `status`) VALUES
@@ -112,7 +112,7 @@ INSERT INTO `news_category` (`id`, `name`, `description`, `sort_order`, `status`
 -- --------------------------------------------------------
 
 --
--- Структура таблицы `product`
+-- Table structure for table `product`
 --
 
 DROP TABLE IF EXISTS `product`;
@@ -132,7 +132,7 @@ CREATE TABLE `product` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
 
 --
--- Дамп данных таблицы `product`
+-- Dumping data for table `product`
 --
 
 INSERT INTO `product` (`id`, `name`, `category_id`, `code`, `price`, `availability`, `brand`, `image`, `description`, `is_new`, `is_recommended`, `status`) VALUES
@@ -165,7 +165,7 @@ INSERT INTO `product` (`id`, `name`, `category_id`, `code`, `price`, `availabili
 -- --------------------------------------------------------
 
 --
--- Структура таблицы `user`
+-- Table structure for table `user`
 --
 
 DROP TABLE IF EXISTS `user`;
@@ -177,11 +177,11 @@ CREATE TABLE `user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Дамп данных таблицы `user`
+-- Dumping data for table `user`
 --
 
 INSERT INTO `user` (`id`, `name`, `email`, `password`) VALUES
-(1, 'vladimir', 'vladimir@v.v', '123456789'),
+(1, 'vladimir', 'vladimir@v.v', '123456'),
 (2, '123132', 'ss@d.sd', 'фывЫВФАЫ'),
 (3, '123132', 'ss@d.sd1', 'фывЫВФАЫ'),
 (4, '123132', 'ss@d.sd1q', 'фывЫВФАЫ'),
@@ -189,65 +189,65 @@ INSERT INTO `user` (`id`, `name`, `email`, `password`) VALUES
 (6, '123132', 'ss@d.sd1q11', 'фывЫВФАЫ');
 
 --
--- Индексы сохранённых таблиц
+-- Indexes for dumped tables
 --
 
 --
--- Индексы таблицы `category`
+-- Indexes for table `category`
 --
 ALTER TABLE `category`
   ADD PRIMARY KEY (`id`);
 
 --
--- Индексы таблицы `news`
+-- Indexes for table `news`
 --
 ALTER TABLE `news`
   ADD PRIMARY KEY (`id`);
 
 --
--- Индексы таблицы `news_category`
+-- Indexes for table `news_category`
 --
 ALTER TABLE `news_category`
   ADD PRIMARY KEY (`id`);
 
 --
--- Индексы таблицы `product`
+-- Indexes for table `product`
 --
 ALTER TABLE `product`
   ADD PRIMARY KEY (`id`);
 
 --
--- Индексы таблицы `user`
+-- Indexes for table `user`
 --
 ALTER TABLE `user`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT для сохранённых таблиц
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT для таблицы `category`
+-- AUTO_INCREMENT for table `category`
 --
 ALTER TABLE `category`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 --
--- AUTO_INCREMENT для таблицы `news`
+-- AUTO_INCREMENT for table `news`
 --
 ALTER TABLE `news`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
--- AUTO_INCREMENT для таблицы `news_category`
+-- AUTO_INCREMENT for table `news_category`
 --
 ALTER TABLE `news_category`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
--- AUTO_INCREMENT для таблицы `product`
+-- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 --
--- AUTO_INCREMENT для таблицы `user`
+-- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
