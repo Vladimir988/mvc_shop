@@ -48,14 +48,12 @@ class Cart {
 
 	public static function getTotalPrice($products) {
 		$productsInCart = self::getProducts();
-		echo "<br><pre>";
-		var_dump($productsInCart);
-		var_dump($products);
+
 		$total = 0;
 
 		if($productsInCart) {
 			foreach($products as $item) {
-				$total = $item['price'];
+				$total += $item['price'] * $productsInCart[$item['id']];
 			}
 		}
 		return $total;

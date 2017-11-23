@@ -61,7 +61,6 @@ class Product {
 			$result->setFetchMode(PDO::FETCH_ASSOC);
 
 			return $result->fetch();
-			var_dump($result);
 		}
 	}
 
@@ -95,11 +94,12 @@ class Product {
 		$result->setFetchMode(PDO::FETCH_ASSOC);
 
 		$i = 0;
+		$products = array();
 		while($row = $result->fetch()) {
-			$products['id'] = $row['id'];
-			$products['code'] = $row['code'];
-			$products['name'] = $row['name'];
-			$products['price'] = $row['price'];
+			$products[$i]['id'] = $row['id'];
+			$products[$i]['code'] = $row['code'];
+			$products[$i]['name'] = $row['name'];
+			$products[$i]['price'] = $row['price'];
 			$i++;
 		}
 		return $products;

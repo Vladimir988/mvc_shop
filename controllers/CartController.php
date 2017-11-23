@@ -24,7 +24,6 @@ class CartController {
 
 		// Получим данные из корзины
 		$productsInCart = Cart::getProducts();
-
 		if($productsInCart) {
 			// Получаем полную информацию о товарах для списка
 			$productsIds = array_keys($productsInCart);

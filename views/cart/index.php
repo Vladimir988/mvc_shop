@@ -38,7 +38,7 @@
 									<td><?php echo $product['code']; ?></td>
 									<td><a href="/product/<?php echo $product['id']; ?>"><?php echo $product['name']; ?></a></td>
 									<td><?php echo $product['price']; ?></td>
-									<td><?php echo $product['id']; ?></td>
+									<td><?php echo $productsInCart[$product['id']]; ?></td>
 								</tr>
 							<?php endforeach; ?>
 								<tr>
