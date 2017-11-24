@@ -23,23 +23,19 @@ class Cart {
 		return self::countItems();
 	}
 
+	/**
+	* Удаляет товар с указанным id из корзины
+	* @param integer $id <p>id товара</p>
+	*/
 	public static function deleteProduct($id) {
-		$id = intval($id);
+		// Получаем масив с идентификаторами и количеством товаров в корзине
+		$productsInCart = self::getProducts();
 
-		//Если в корзине уже есть товары (они хранятся в сессии)
-		if(isset($_SESSION['products'])) {
-			$productsInCart = $_SESSION['products'];
-		}
+		// Удаляем из массива элемент с указаным id
+		unset($productsInCart[$id]);
 
-		if(array_key_exists($id, $productsInCart)) {
-			$productsInCart[$id] --;
-		} else {
-			$productsInCart[$id] = 1;
-		}
-
+		// Записывает массив с удаленным элементом в сессию
 		$_SESSION['products'] = $productsInCart;
-
-		return self::countItems();
 	}
 
 	/*
