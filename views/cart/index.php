@@ -32,6 +32,7 @@
 								<th>Название</th>
 								<th>Стоимость, грн</th>
 								<th>Количество, шт</th>
+								<th>Удалить</th>
 							</tr>
 							<?php foreach($products as $product): ?>
 								<tr>
@@ -39,6 +40,7 @@
 									<td><a href="/product/<?php echo $product['id']; ?>"><?php echo $product['name']; ?></a></td>
 									<td><?php echo $product['price']; ?></td>
 									<td><?php echo $productsInCart[$product['id']]; ?></td>
+									<td><a href="/cart/delete/<?php echo $product['id']; ?>" data-id="<?php echo $product['id']; ?>" class="delete-from-cart"><i class="fa fa-times"></i></a></td>
 								</tr>
 							<?php endforeach; ?>
 								<tr>
@@ -46,8 +48,9 @@
 									<td><?php echo $totalPrice; ?></td>
 								</tr>
 						</table>
+						<p><a href="/cart/checkout/">Оформить заказ</a></p>
 					<?php else: ?>
-						<p>Корзина пуста вернитесь в <a href="/catalog/">каталог товаров.</a></p>
+						<p>Корзина пуста, вернитесь в <a href="/catalog/">каталог товаров.</a></p>
 					<?php endif; ?>
 
 				</div><!--features_items-->

@@ -86,7 +86,7 @@
 						<div class="mainmenu pull-left">
 							<ul class="nav navbar-nav collapse navbar-collapse">
 								<li><a href="/">Главная</a></li>
-								<li class="dropdown"><a href="#">Магазин<i class="fa fa-angle-down"></i></a>
+								<li class="dropdown"><a href="/catalog/">Магазин<i class="fa fa-angle-down"></i></a>
 									<ul role="menu" class="sub-menu">
 										<li><a href="/catalog/">Каталог товаров</a></li>
 										<li><a href="/cart/">Корзина</a></li> 

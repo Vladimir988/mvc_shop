@@ -23,6 +23,25 @@ class Cart {
 		return self::countItems();
 	}
 
+	public static function deleteProduct($id) {
+		$id = intval($id);
+
+		//Если в корзине уже есть товары (они хранятся в сессии)
+		if(isset($_SESSION['products'])) {
+			$productsInCart = $_SESSION['products'];
+		}
+
+		if(array_key_exists($id, $productsInCart)) {
+			$productsInCart[$id] --;
+		} else {
+			$productsInCart[$id] = 1;
+		}
+
+		$_SESSION['products'] = $productsInCart;
+
+		return self::countItems();
+	}
+
 	/*
 	* Подсчитает количество товаров в корзине (в сессии)
 	* @return int
@@ -57,5 +76,11 @@ class Cart {
 			}
 		}
 		return $total;
+	}
+
+	public static function clear() {
+		if(isset($_SESSION['products'])) {
+			unset($_SESSION['products']);
+		}
 	}
 }

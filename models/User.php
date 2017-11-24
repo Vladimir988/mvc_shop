@@ -63,6 +63,14 @@ class User {
 	}
 
 	/*
+	* Проверка phone
+	*/
+	public static function checkPhone() {
+		
+		return true;
+	}
+
+	/*
 	* Проверяем существует ли пользователь с заданными $email и $password
 	* @param string $email
 	* @param string $password
