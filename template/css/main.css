@@ -4,13 +4,28 @@
 **************************/
 @import url(http://fonts.googleapis.com/css?family=Roboto:400,300,400italic,500,700,100&subset=latin,cyrillic-ext,cyrillic);
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:400,800,300,600,700);
-@import url(http://fonts.googleapis.com/css?family=Abel);
+@import url(http://fonts.googleapis.com/css?family="abel");
 
 body {
   font-family: 'Roboto', sans-serif;
-  background:;
   position: relative;
-  font-weight:400px;
+  font-weight: 400;
+}
+
+html, body, .page-wrapper {
+  height: 100%;
+}
+
+.main {
+  min-height: calc(100% - 75px);
+}
+
+header {
+  min-height: 35px;
+}
+
+footer {
+  height: 40px;
 }
 
 ul li {
@@ -361,7 +376,7 @@ ul.sub-menu {
 
 .companyinfo h2 {
   color: #B4B1AB;
-  font-family: abel;
+  font-family: "abel";
   font-size: 27px;
   text-transform: uppercase;
 }
@@ -580,15 +595,15 @@ ul.sub-menu {
 	  background: #FE980F;
 }
 
-.item {
-  padding-left: 100px;
-}
-
-
 .pricing {
   position: absolute;
   right: 40%;
   top: 52%;
+}
+
+.recommended_items #prev,
+.recommended_items #next {
+  cursor: pointer;
 }
 
 .girl {
@@ -597,9 +612,13 @@ ul.sub-menu {
 
 .item h1 {
   color: #B4B1AB;
-  font-family: abel;
+  font-family: "abel";
   font-size: 48px;
   margin-top: 115px;
+}
+
+label {
+  display: block;
 }
 
 .item h1 span {
@@ -1047,6 +1066,11 @@ h2.title {
 
 .recommended_items {
   overflow: hidden;
+  position: relative;
+}
+
+.cycle-slideshow {
+  margin: 0 25px;
 }
 
 #recommended-item-carousel .carousel-inner .item {
@@ -1274,7 +1298,7 @@ h2.title {
   width: 50px;
 }
 
-.product-information span label {
+.product-information span l"abel" {
   color: #696763;
   font-family: 'Roboto', sans-serif;
   font-weight: 700;
@@ -1480,6 +1504,19 @@ h2.title {
   margin-right: 5px;
 }
 
+.login-form label {
+  position: relative;
+}
+
+.login-form label span {
+  position: absolute;
+  color: red;
+  top: 35px;
+  right: 10px;
+  font-size: 12px;
+  line-height: 1;
+}
+
 .login-form form button {
   margin-top: 23px;
 }
@@ -1494,12 +1531,12 @@ h2.title {
   padding: 6px 25px;
 }
 
-.login-form label{
+.login-form l"abel"{
 
 }
 
 
-.login-form label input {
+.login-form l"abel" input {
   border: medium none;
   display: inline-block;
   margin-bottom: 0;
@@ -1717,7 +1754,7 @@ h2.title {
 }
 
 
-.user_option label {
+.user_option l"abel" {
   color: #696763;
   font-weight: normal;
   margin-left: 10px;
@@ -1731,7 +1768,7 @@ h2.title {
   overflow: hidden;
 }
 
-.user_info label {
+.user_info l"abel" {
   color: #696763;
   display: block;
   font-size: 15px;
@@ -1760,7 +1797,7 @@ h2.title {
   background: #F0F0E9;
   border:0;
   color: #696763;
-  padding: 5px;
+  padding: 5px 10px;
   width: 100%;
   border-radius: 0;
   resize: none
@@ -1838,7 +1875,7 @@ h2.title {
   font-weight: normal;
 }
 
-.checkout-options .nav label {
+.checkout-options .nav l"abel" {
   font-weight: normal;
 }
 
@@ -1930,7 +1967,7 @@ h2.title {
   padding: 15px 20px;
 }
 
-.order-message label {
+.order-message l"abel" {
   font-weight:300;
   color: #696763;
   font-family: 'Roboto', sans-serif;
@@ -1952,7 +1989,7 @@ h2.title {
   margin-top: -25px
 }
 
-.payment-options span label {
+.payment-options span "abel" {
   color: #696763;
   font-size: 14px;
   font-weight: 300;
@@ -2355,7 +2392,7 @@ h2.title {
   margin-bottom: 45px
 }
 
-.replay-box label {
+.replay-box l"abel" {
   background:#FE980F;
   color: #FFFFFF;
   margin-bottom: 15px;
@@ -2405,7 +2442,7 @@ h2.title {
   position: relative;
 }
 
-.blank-arrow label:after {
+.blank-arrow l"abel":after {
   content: "";
   position: absolute;
   width: auto;
@@ -2534,11 +2571,11 @@ input.btn.btn-default:hover {
   background: #ff9303;
   color: #fff;
 }
-label {
+l"abel" {
   width: 100%;
   position: relative;
 }
-label span {
+l"abel" span {
   position: absolute;
   top: 0;
   right: 0;

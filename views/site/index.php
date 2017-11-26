@@ -35,8 +35,8 @@
 										<a href="/cart/add/<?php echo $product['id']; ?>" data-id="<?php echo $product['id']; ?>" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>В корзину</a>
 									</div>
 									<?php if( $product['is_new']): ?>
-									<img src="/template/images/home/new.png" class="new" alt="new">
-								<?php endif; ?>
+										<img src="/template/images/home/new.png" class="new" alt="new">
+									<?php endif; ?>
 								</div>
 							</div>
 						</div>
@@ -47,94 +47,40 @@
 				<div class="recommended_items"><!--recommended_items-->
 					<h2 class="title text-center">Рекомендуемые товары</h2>
 
-					<div id="recommended-item-carousel" class="carousel slide" data-ride="carousel">
-						<div class="carousel-inner">
-							<div class="item active">	
-								<div class="col-sm-4">
-									<div class="product-image-wrapper">
-										<div class="single-products">
-											<div class="productinfo text-center">
-												<img src="/template/images/home/recommend1.jpg" alt="" />
-												<h2>$56</h2>
-												<p>Easy Polo Black Edition</p>
-												<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>В корзину</a>
-											</div>
+					<div class="cycle-slideshow" 
+							 data-cycle-fx=carousel
+							 data-cycle-timeout=5000
+							 data-cycle-carousel-visible=4
+							 data-cycle-carousel-fluid=true
+							 data-cycle-slides="div.item"
+							 data-cycle-prev="#prev"
+							 data-cycle-next="#next">
 
-										</div>
-									</div>
-								</div>
-								<div class="col-sm-4">
+							<?php foreach($recomendedProducts as $recomendedProduct): ?>
+								<div class="item">
 									<div class="product-image-wrapper">
 										<div class="single-products">
 											<div class="productinfo text-center">
-												<img src="/template/images/home/recommend2.jpg" alt="" />
-												<h2>$56</h2>
-												<p>Easy Polo Black Edition</p>
-												<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>В корзину</a>
+												<img src="<?php echo $recomendedProduct['image']; ?>" alt="" />
+												<h2>$<?php echo $recomendedProduct['price']; ?></h2>
+												<p><a href="/product/<?php echo $recomendedProduct['id']; ?>"><?php echo $recomendedProduct['name']; ?></a></p>
+												<a href="/cart/add/<?php echo $recomendedProduct['id']; ?>" data-id="<?php echo $recomendedProduct['id']; ?>" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>В корзину</a>
 											</div>
+											<?php if($recomendedProduct['is_new']): ?>
+												<img src="/template/images/home/new.png" class="new" alt="new">
+											<?php endif; ?>
 										</div>
 									</div>
 								</div>
-								<div class="col-sm-4">
-									<div class="product-image-wrapper">
-										<div class="single-products">
-											<div class="productinfo text-center">
-												<img src="/template/images/home/recommend3.jpg" alt="" />
-												<h2>$56</h2>
-												<p>Easy Polo Black Edition</p>
-												<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>В корзину</a>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="item">	
-								<div class="col-sm-4">
-									<div class="product-image-wrapper">
-										<div class="single-products">
-											<div class="productinfo text-center">
-												<img src="/template/images/home/recommend1.jpg" alt="" />
-												<h2>$56</h2>
-												<p>Easy Polo Black Edition</p>
-												<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>В корзину</a>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="col-sm-4">
-									<div class="product-image-wrapper">
-										<div class="single-products">
-											<div class="productinfo text-center">
-												<img src="/template/images/home/recommend2.jpg" alt="" />
-												<h2>$56</h2>
-												<p>Easy Polo Black Edition</p>
-												<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>В корзину</a>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="col-sm-4">
-									<div class="product-image-wrapper">
-										<div class="single-products">
-											<div class="productinfo text-center">
-												<img src="/template/images/home/recommend3.jpg" alt="" />
-												<h2>$56</h2>
-												<p>Easy Polo Black Edition</p>
-												<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>В корзину</a>
-											</div>
+							<?php endforeach; ?>
 
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<a class="left recommended-item-control" href="#recommended-item-carousel" data-slide="prev">
+						</div><!-- /cycle-slideshow -->
+						<a class="left recommended-item-control" id="prev">
 							<i class="fa fa-angle-left"></i>
 						</a>
-						<a class="right recommended-item-control" href="#recommended-item-carousel" data-slide="next">
+						<a class="right recommended-item-control" id="next">
 							<i class="fa fa-angle-right"></i>
-						</a>			
-					</div>
+						</a>
 				</div><!--/recommended_items-->
 
 			</div>

@@ -25,6 +25,30 @@ class Product {
 		return $productsList;
 	}
 
+	/*
+	* Returns an array of recomended products
+	*/
+	public static function getRecomendedProducts($count = 12) {
+		$count = intval($count);
+		$db = Db::getConnection();
+		$recomendedProducts = array();
+
+		$sql = ("SELECT id, name, price, image, is_new FROM product WHERE status = '1' AND is_recommended = '1' ORDER BY id DESC LIMIT " . $count);
+
+		$result = $db->query($sql);
+
+		$i = 0;
+		while($row = $result->fetch()) {
+			$recomendedProducts[$i]['id'] = $row['id'];
+			$recomendedProducts[$i]['name'] = $row['name'];
+			$recomendedProducts[$i]['price'] = $row['price'];
+			$recomendedProducts[$i]['image'] = $row['image'];
+			$recomendedProducts[$i]['is_new'] = $row['is_new'];
+			$i++;
+		}
+		return $recomendedProducts;
+	}
+
 	public static function getProductsListByCategory($categoryId = false, $page = 1) {
 		if($categoryId) {
 			$page = intval($page);
@@ -103,5 +127,43 @@ class Product {
 			$i++;
 		}
 		return $products;
+	}
+
+	/*
+	* Returns products list
+	* Returns array <p>Массив с товарами</p>
+	*/
+	public static function getProductsList() {
+		$db = Db::getConnection();
+
+		// Получение и возврат товаров
+		$result = $db->query('SELECT id, name, price, code FROM product ORDER BY id ASC');
+		$productList = array();
+		$i = 0;
+		while($row = $result->fetch()) {
+			$productList[$i]['id'] = $row['id'];
+			$productList[$i]['name'] = $row['name'];
+			$productList[$i]['code'] = $row['code'];
+			$productList[$i]['price'] = $row['price'];
+			$i++;
+		}
+		return $productList;
+	}
+
+	/*
+	* Удаляет товар с указаным id
+	* @param integer $id
+	* @return boolean
+	*/
+	public static function deleteProductById($id) {
+		$db = Db::getConnection();
+
+		$sql = 'DELETE FROM product WHERE id = :id';
+
+		// Получение и возврат результатов. Используется подготовленный запрос
+		$result = $db->prepare($sql);
+		$result->bindParam(':id', $id, PDO::PARAM_INT);
+
+		return $result->execute();
 	}
 }

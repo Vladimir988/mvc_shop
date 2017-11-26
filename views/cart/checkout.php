@@ -16,15 +16,16 @@
 					<?php else: ?>
 						<div class="col-sm-8 col-sm-offset-2"><p>Выбрано товаров: <?php echo $totalQuantity; ?>, на сумму: <?php echo $totalPrice; ?>грн.</p></div>
 						<div class="col-sm-8 col-sm-offset-2">
-							<?php if(isset($errors) and is_array($errors)): ?>
+
+							<!-- <?php if(isset($errors) and is_array($errors)): ?>
 								<ul>
 									<?php foreach($errors as $error): ?>
 										<li> - <?php echo $error; ?></li>
 									<?php endforeach; ?>
 								</ul>
-							<?php endif; ?>
+							<?php endif; ?> -->
 
-							<p>Для оформления заказа заполните форму. После этого наш менеджер свяжется с вами.</p>
+							<p>Для оформления заказа заполните форму. Наш менеджер свяжется с вами.</p>
 
 							<div class="login-form">
 								<form action="#" method="post">

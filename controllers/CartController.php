@@ -65,7 +65,7 @@ class CartController {
 			if(!User::checkName($userName)) {
 				$errors['userName'] = 'Неправильное имя'; 
 			}
-			if(!User::CheckPhone($userPhone)) {
+			if(!User::checkPhone($userPhone)) {
 				$errors['userPhone'] = 'Неправильный телефон'; 
 			}
 
@@ -115,7 +115,7 @@ class CartController {
 			if($productsInCart == false) {
 				// В корзине есть товары? - Нет.
 				// Отправляем пользователя на главную или в магазин искать товары
-				header("Location /");
+				header("Location: /");
 			} else {
 				// В корзине есть товары? - Да.
 

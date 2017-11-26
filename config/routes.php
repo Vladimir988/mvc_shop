@@ -15,13 +15,26 @@
 		'cart/addAjax/([0-9]+)'           => 'cart/addAjax/$1', //actionAdd в CartController
 		'cart/checkout'                   => 'cart/checkout',
 		'cart'                            => 'cart/index', //actionIndex в CartController
-
+		// Пользователь
 		'user/register'                   => 'user/register',
 		'user/login'                      => 'user/login',
 		'user/logout'                     => 'user/logout',
-
 		'user/edit'                       => 'cabinet/edit',
 		'cabinet'                         => 'cabinet/index',
+
+
+
+
+		// Управление категориями
+		'admin/category/update/([0-9]+)'  => 'adminCategory/update/$1',
+		'admin/category/delete/([0-9]+)'  => 'adminCategory/delete/$1',
+		'admin/category/create'           => 'adminCategory/create',
+		'admin/category'                  => 'adminCategory/index',
+		// Управление товарами
+		'admin/product/delete/([0-9]+)'   => 'adminProduct/delete/$1',
+		'admin/product'                   => 'adminProduct/index',
+
+		'admin'                           => 'admin/index',
 
 		'contacts'                        => 'site/contact',
 
