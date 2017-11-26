@@ -166,4 +166,29 @@ class Product {
 
 		return $result->execute();
 	}
+
+	public static function createProduct($options) {
+		$db = Db::getConnection();
+
+		// Текст запроса к БД
+		$sql = 'INSERT INTO product (name, code, price, category_id, brand, availability, description, is_new, is_recomended, status) VALUES (:name, :code, :price, :category_id, :brand, :availability, :description, :is_new, :is_recomended, :status,)';
+
+		// Подготовленный запрос
+		$result = $db->prepare($sql);
+		$result->bindParam(':name', $options['name'], PDO::PARAM_STR);
+		$result->bindParam(':code', $options['code'], PDO::PARAM_STR);
+		$result->bindParam(':price', $options['price'], PDO::PARAM_STR);
+		$result->bindParam(':category_id', $options['category_id'], PDO::PARAM_STR);
+		$result->bindParam(':brand', $options['brand'], PDO::PARAM_STR);
+		$result->bindParam(':availability', $options['availability'], PDO::PARAM_STR);
+		$result->bindParam(':description', $options['description'], PDO::PARAM_STR);
+		$result->bindParam(':is_new', $options['is_new'], PDO::PARAM_STR);
+		$result->bindParam(':is_recomended', $options['is_recomended'], PDO::PARAM_STR);
+		$result->bindParam(':status', $options['status'], PDO::PARAM_STR);
+		if($result->execute()) {
+			return $db->lastInsertId();
+		}
+		// Иначе возвращаем 0
+		return false;
+	}
 }

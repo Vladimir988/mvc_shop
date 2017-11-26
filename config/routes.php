@@ -31,7 +31,9 @@
 		'admin/category/create'           => 'adminCategory/create',
 		'admin/category'                  => 'adminCategory/index',
 		// Управление товарами
+		'admin/product/update/([0-9]+)'   => 'adminProduct/update/$1',
 		'admin/product/delete/([0-9]+)'   => 'adminProduct/delete/$1',
+		'admin/product/create'            => 'adminProduct/create',
 		'admin/product'                   => 'adminProduct/index',
 
 		'admin'                           => 'admin/index',
