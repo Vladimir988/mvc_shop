@@ -6,7 +6,7 @@
 			<br>
 
 			<div class="breadcrumbs">
-				<ol>
+				<ol class="breadcrumb">
 					<li><a href="/admin">Админпанель</a></li>
 					<li class="active">Управление товарами</li>
 				</ol>
@@ -19,7 +19,7 @@
 			<table class="table-bordered table-striped table">
 				<tr>
 					<td>ID товара</td>
-					<td>Артикул</td>
+					<td>Код товара</td>
 					<td>Название товара</td>
 					<td>Цена</td>
 					<td></td>

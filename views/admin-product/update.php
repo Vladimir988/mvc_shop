@@ -15,7 +15,7 @@
 			</div>
 
 
-			<div class="col-lg-12"><h4>Добавить новый товар</h4></div>
+			<div class="col-lg-12"><h4>Редактировать товар #<?php echo $id; ?></h4></div>
 
 			<br/>
 
@@ -32,13 +32,13 @@
 					<form action="#" method="post" enctype="multipart/form-data">
 
 						<p>Название товара</p>
-						<input type="text" name="name" placeholder="" value="<?php if(isset($options)){echo $options['name'];} ?>">
+						<input type="text" name="name" placeholder="" value="<?php echo $product['name']; ?>">
 
 						<p>Код товара</p>
-						<input type="text" name="code" placeholder="" value="<?php if(isset($options)){echo $options['code'];} ?>">
+						<input type="text" name="code" placeholder="" value="<?php echo $product['code']; ?>">
 
 						<p>Стоимость, $</p>
-						<input type="text" name="price" placeholder="" value="<?php if(isset($options)){echo $options['price'];} ?>">
+						<input type="text" name="price" placeholder="" value="<?php echo $product['price']; ?>">
 
 						<p>Категория</p>
 						<select name="category_id">
@@ -54,45 +54,46 @@
 						<br/><br/>
 
 						<p>Производитель</p>
-						<input type="text" name="brand" placeholder="" value="<?php if(isset($options)){echo $options['brand'];} ?>">
+						<input type="text" name="brand" placeholder="" value="<?php echo $product['brand']; ?>">
 
 						<p>Изображение товара</p>
-						<input type="file" name="image" placeholder="" value="">
+						<div class="update_img_wrapp"><img src="<?php if(Product::getImage($product['id'])){echo Product::getImage($product['id']);} else {echo '/template/images/home/product_default.jpg';} ?>" width="200" alt=""></div>
+						<input type="file" name="image" placeholder="" value="<?php echo $product['image']; ?>">
 
 						<p>Наличие на складе</p>
 						<select name="availability">
-							<option value="1" selected="selected">Да</option>
-							<option value="0">Нет</option>
+							<option value="1" <?php if($product['availability'] == 1) echo ' selected="selected"' ?>>Да</option>
+							<option value="0" <?php if($product['availability'] == 0) echo ' selected="selected"' ?>>Нет</option>
 						</select>
 
 						<br/><br/>
 
 						<p>Новинка</p>
 						<select name="is_new">
-							<option value="1" selected="selected">Да</option>
-							<option value="0">Нет</option>
+							<option value="1" <?php if($product['is_new'] == 1) echo ' selected="selected"' ?>>Да</option>
+							<option value="0" <?php if($product['is_new'] == 0) echo ' selected="selected"' ?>>Нет</option>
 						</select>
 
 						<br/><br/>
 
 						<p>Рекомендуемые</p>
 						<select name="is_recommended">
-							<option value="1" selected="selected">Да</option>
-							<option value="0">Нет</option>
+							<option value="1" <?php if($product['is_recommended'] == 1) echo ' selected="selected"' ?>>Да</option>
+							<option value="0" <?php if($product['is_recommended'] == 0) echo ' selected="selected"' ?>>Нет</option>
 						</select>
 
 						<br/><br/>
 
 						<p>Статус</p>
 						<select name="status">
-							<option value="1" selected="selected">Отображается</option>
-							<option value="0">Скрыт</option>
+							<option value="1" <?php if($product['status'] == 1) echo ' selected="selected"' ?>>Да</option>
+							<option value="0" <?php if($product['status'] == 0) echo ' selected="selected"' ?>>Нет</option>
 						</select>
 
 						<br/><br/>
 
 						<p>Детальное описание</p>
-						<textarea name="description"><?php if(isset($options)){echo $options['description'];} ?></textarea>
+						<textarea name="description"><?php if(isset($product)){echo $product['description'];} ?></textarea>
 
 						<br/><br/>
 

@@ -66,7 +66,6 @@ class User {
 	* Проверка phone
 	*/
 	public static function checkPhone($phone) {
-		$phone = intval($phone);
 		if(strlen($phone) >= 6) {
 			return true;
 		}

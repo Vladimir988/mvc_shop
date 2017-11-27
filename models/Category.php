@@ -22,6 +22,24 @@ class Category {
 	}
 
 	/**
+	* Returns an array of categories
+	*/
+	public static function getCategoryById($id) {
+		$id = intval($id);
+
+		if ($id) {
+			$db = Db::getConnection();
+
+			// Текст запроса к БД
+			$sql = "SELECT * FROM category WHERE id = ".$id;
+			$result = $db->query($sql);
+			$result->setFetchMode(PDO::FETCH_ASSOC);
+
+			return $result->fetch();
+		}
+	}
+
+	/**
 	* Returns an array of categories for Administator
 	*/
 	public static function getCategoriesListAdmin() {
@@ -42,5 +60,59 @@ class Category {
 			$i++;
 		}
 		return $categoriesList;
+	}
+
+	/**
+	* Returns an array of categories for Administator
+	*/
+	public static function createCategory($name, $sortOrder, $status) {
+		$db = Db::getConnection();
+
+		// Текст запроса к БД
+		$sql = "INSERT INTO category (name, sort_order, status) VALUES (:name, :sort_order, :status)";
+
+		// Подготовленный запрос
+		$result = $db->prepare($sql);
+		$result->bindParam(':name', $name, PDO::PARAM_STR);
+		$result->bindParam(':sort_order', $sortOrder, PDO::PARAM_STR);
+		$result->bindParam(':status', $status, PDO::PARAM_STR);
+		if($result->execute()) {
+			return $db->lastInsertId();
+		}
+		// Иначе возвращаем false
+		return false;
+	}
+
+	/**
+	* Returns an array of categories for Administator
+	*/
+	public static function updateCategoryById($id, $name, $sortOrder, $status) {
+		$db = Db::getConnection();
+
+		// Текст запроса к БД
+		$sql = "UPDATE category SET name = :name, sort_order = :sort_order, status = :status WHERE id = :id";
+
+		// Подготовленный запрос
+		$result = $db->prepare($sql);
+		$result->bindParam(':name', $name, PDO::PARAM_STR);
+		$result->bindParam(':sort_order', $sortOrder, PDO::PARAM_STR);
+		$result->bindParam(':status', $status, PDO::PARAM_STR);
+		$result->bindParam(':id', $id, PDO::PARAM_STR);
+		return $result->execute();
+	}
+
+	/**
+	* Returns an array of categories for Administator
+	*/
+	public static function deleteCategoryById($category_id) {
+		$db = Db::getConnection();
+
+		$sql = "DELETE FROM category WHERE id = :id";
+
+		// Получение и возврат результатов. Используется подготовленный запрос
+		$result = $db->prepare($sql);
+		$result->bindParam(':id', $category_id, PDO::PARAM_INT);
+
+		return $result->execute();
 	}
 }

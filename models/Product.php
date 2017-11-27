@@ -117,15 +117,18 @@ class Product {
 		$result = $db->query($sql);
 		$result->setFetchMode(PDO::FETCH_ASSOC);
 
-		$i = 0;
 		$products = array();
+		$i = 0;
 		while($row = $result->fetch()) {
 			$products[$i]['id'] = $row['id'];
-			$products[$i]['code'] = $row['code'];
 			$products[$i]['name'] = $row['name'];
+			$products[$i]['code'] = $row['code'];
 			$products[$i]['price'] = $row['price'];
+			$products[$i]['availability'] = $row['availability'];
+			$products[$i]['brand'] = $row['brand'];
 			$i++;
 		}
+
 		return $products;
 	}
 
@@ -171,7 +174,7 @@ class Product {
 		$db = Db::getConnection();
 
 		// Текст запроса к БД
-		$sql = 'INSERT INTO product (name, code, price, category_id, brand, availability, description, is_new, is_recomended, status) VALUES (:name, :code, :price, :category_id, :brand, :availability, :description, :is_new, :is_recomended, :status,)';
+		$sql = "INSERT INTO product (name, code, price, category_id, brand, availability, description, is_new, is_recommended, status) VALUES (:name, :code, :price, :category_id, :brand, :availability, :description, :is_new, :is_recommended, :status)";
 
 		// Подготовленный запрос
 		$result = $db->prepare($sql);
@@ -183,12 +186,57 @@ class Product {
 		$result->bindParam(':availability', $options['availability'], PDO::PARAM_STR);
 		$result->bindParam(':description', $options['description'], PDO::PARAM_STR);
 		$result->bindParam(':is_new', $options['is_new'], PDO::PARAM_STR);
-		$result->bindParam(':is_recomended', $options['is_recomended'], PDO::PARAM_STR);
+		$result->bindParam(':is_recommended', $options['is_recommended'], PDO::PARAM_STR);
 		$result->bindParam(':status', $options['status'], PDO::PARAM_STR);
 		if($result->execute()) {
 			return $db->lastInsertId();
 		}
-		// Иначе возвращаем 0
+		// Иначе возвращаем false
 		return false;
+	}
+
+	/*
+	* Редактирует товар с указаным id
+	* @param integer $id
+	* @return boolean
+	*/
+	public static function updateProductById($id, $options) {
+		$db = Db::getConnection();
+
+		// Текст запроса к БД
+		$sql = "UPDATE product SET name = :name, code = :code, price = :price, category_id = :category_id, brand = :brand, availability = :availability, description = :description, is_new = :is_new, is_recommended = :is_recommended, status = :status WHERE id = :id";
+
+		// Подготовленный запрос
+		$result = $db->prepare($sql);
+		$result->bindParam(':name', $options['name'], PDO::PARAM_STR);
+		$result->bindParam(':code', $options['code'], PDO::PARAM_STR);
+		$result->bindParam(':price', $options['price'], PDO::PARAM_STR);
+		$result->bindParam(':category_id', $options['category_id'], PDO::PARAM_STR);
+		$result->bindParam(':brand', $options['brand'], PDO::PARAM_STR);
+		$result->bindParam(':availability', $options['availability'], PDO::PARAM_STR);
+		$result->bindParam(':description', $options['description'], PDO::PARAM_STR);
+		$result->bindParam(':is_new', $options['is_new'], PDO::PARAM_STR);
+		$result->bindParam(':is_recommended', $options['is_recommended'], PDO::PARAM_STR);
+		$result->bindParam(':status', $options['status'], PDO::PARAM_STR);
+		$result->bindParam(':id', $id, PDO::PARAM_STR);
+		return $result->execute();
+	}
+
+	/*
+	* Возвращает адресс картинки товара с указаным id
+	* @param integer $id
+	* @return string img
+	*/
+	public static function getImage($id) {
+		$db = Db::getConnection();
+
+		// Текст запроса к БД
+		$sql = "SELECT image FROM product WHERE id = ".$id;
+
+		$result = $db->query($sql);
+		$result->setFetchMode(PDO::FETCH_ASSOC);
+
+		$image = implode($result->fetch());
+		return $image;
 	}
 }

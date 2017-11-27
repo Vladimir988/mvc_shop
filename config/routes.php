@@ -21,20 +21,21 @@
 		'user/logout'                     => 'user/logout',
 		'user/edit'                       => 'cabinet/edit',
 		'cabinet'                         => 'cabinet/index',
-
-
-
-
-		// Управление категориями
-		'admin/category/update/([0-9]+)'  => 'adminCategory/update/$1',
-		'admin/category/delete/([0-9]+)'  => 'adminCategory/delete/$1',
-		'admin/category/create'           => 'adminCategory/create',
-		'admin/category'                  => 'adminCategory/index',
 		// Управление товарами
 		'admin/product/update/([0-9]+)'   => 'adminProduct/update/$1',
 		'admin/product/delete/([0-9]+)'   => 'adminProduct/delete/$1',
 		'admin/product/create'            => 'adminProduct/create',
 		'admin/product'                   => 'adminProduct/index',
+		// Управление категориями
+		'admin/category/update/([0-9]+)'  => 'adminCategory/update/$1',
+		'admin/category/delete/([0-9]+)'  => 'adminCategory/delete/$1',
+		'admin/category/create'           => 'adminCategory/create',
+		'admin/category'                  => 'adminCategory/index',
+		// Управление заказами
+		'admin/order/update/([0-9]+)'     => 'adminOrder/update/$1',
+		'admin/order/delete/([0-9]+)'     => 'adminOrder/delete/$1',
+		'admin/order/view'                => 'adminOrder/view',
+		'admin/order'                     => 'adminOrder/index',
 
 		'admin'                           => 'admin/index',
 

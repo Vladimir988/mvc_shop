@@ -1582,7 +1582,6 @@ h2.title {
 
 .breadcrumbs li {
   display: inline-block;
-  margin-right: 20px;
 }
 
 .breadcrumbs li a {
@@ -2563,21 +2562,13 @@ input.btn.btn-default {
   margin-right: auto;
   color: #2e2e2e;
 }
-input.btn.btn-default:hover {
-  background: #ff9303;
-  color: #fff;
+.login-form form input[type=file] {
+  padding: 0;
 }
-l"abel" {
-  width: 100%;
-  position: relative;
+.fa {
+  margin-right: 5px;
 }
-l"abel" span {
-  position: absolute;
-  top: 0;
-  right: 0;
-  color: red;
-  font-size: 11px;
-  font-family: Arial;
-  letter-spacing: 0.2px;
-  padding-right: 5px;
+.user_info .update_img_wrapp {
+  text-align: center;
+  margin: 10px 0;
 }
