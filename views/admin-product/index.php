@@ -22,6 +22,7 @@
 					<td>Код товара</td>
 					<td>Название товара</td>
 					<td>Цена</td>
+					<td>Количество на складе</td>
 					<td></td>
 					<td></td>
 				</tr>
@@ -31,6 +32,7 @@
 						<td><?php echo $product['code']; ?></td>
 						<td><?php echo $product['name']; ?></td>
 						<td><?php echo $product['price']; ?></td>
+						<td><?php echo $product['quantity']; ?></td>
 						<td><a href="/admin/product/update/<?php echo $product['id']; ?>" title="Редактировать"><i class="fa fa-pencil-square"></i>Редактировать</a></td>
 						<td><a href="/admin/product/delete/<?php echo $product['id']; ?>" title="Удалить"><i class="fa fa-times"></i>Удалить</a></td>
 					</tr>

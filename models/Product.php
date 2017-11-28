@@ -126,6 +126,7 @@ class Product {
 			$products[$i]['price'] = $row['price'];
 			$products[$i]['availability'] = $row['availability'];
 			$products[$i]['brand'] = $row['brand'];
+			$products[$i]['quantity'] = $row['quantity'];
 			$i++;
 		}
 
@@ -140,7 +141,7 @@ class Product {
 		$db = Db::getConnection();
 
 		// Получение и возврат товаров
-		$result = $db->query('SELECT id, name, price, code FROM product ORDER BY id ASC');
+		$result = $db->query('SELECT id, name, price, code, quantity FROM product ORDER BY id ASC');
 		$productList = array();
 		$i = 0;
 		while($row = $result->fetch()) {
@@ -148,6 +149,7 @@ class Product {
 			$productList[$i]['name'] = $row['name'];
 			$productList[$i]['code'] = $row['code'];
 			$productList[$i]['price'] = $row['price'];
+			$productList[$i]['quantity'] = $row['quantity'];
 			$i++;
 		}
 		return $productList;
@@ -174,7 +176,7 @@ class Product {
 		$db = Db::getConnection();
 
 		// Текст запроса к БД
-		$sql = "INSERT INTO product (name, code, price, category_id, brand, availability, description, is_new, is_recommended, status) VALUES (:name, :code, :price, :category_id, :brand, :availability, :description, :is_new, :is_recommended, :status)";
+		$sql = "INSERT INTO product (name, code, price, category_id, brand, availability, description, is_new, is_recommended, status, quantity) VALUES (:name, :code, :price, :category_id, :brand, :availability, :description, :is_new, :is_recommended, :status, :quantity)";
 
 		// Подготовленный запрос
 		$result = $db->prepare($sql);
@@ -188,6 +190,7 @@ class Product {
 		$result->bindParam(':is_new', $options['is_new'], PDO::PARAM_STR);
 		$result->bindParam(':is_recommended', $options['is_recommended'], PDO::PARAM_STR);
 		$result->bindParam(':status', $options['status'], PDO::PARAM_STR);
+		$result->bindParam(':quantity', $options['quantity'], PDO::PARAM_STR);
 		if($result->execute()) {
 			return $db->lastInsertId();
 		}
@@ -204,7 +207,7 @@ class Product {
 		$db = Db::getConnection();
 
 		// Текст запроса к БД
-		$sql = "UPDATE product SET name = :name, code = :code, price = :price, category_id = :category_id, brand = :brand, availability = :availability, description = :description, is_new = :is_new, is_recommended = :is_recommended, status = :status WHERE id = :id";
+		$sql = "UPDATE product SET name = :name, code = :code, price = :price, category_id = :category_id, brand = :brand, availability = :availability, description = :description, is_new = :is_new, is_recommended = :is_recommended, status = :status, quantity = :quantity WHERE id = :id";
 
 		// Подготовленный запрос
 		$result = $db->prepare($sql);
@@ -218,6 +221,7 @@ class Product {
 		$result->bindParam(':is_new', $options['is_new'], PDO::PARAM_STR);
 		$result->bindParam(':is_recommended', $options['is_recommended'], PDO::PARAM_STR);
 		$result->bindParam(':status', $options['status'], PDO::PARAM_STR);
+		$result->bindParam(':quantity', $options['quantity'], PDO::PARAM_STR);
 		$result->bindParam(':id', $id, PDO::PARAM_STR);
 		return $result->execute();
 	}
@@ -228,15 +232,21 @@ class Product {
 	* @return string img
 	*/
 	public static function getImage($id) {
-		$db = Db::getConnection();
+		// Название изображения пустышки
+		$noImage = 'no-image.jpg';
 
-		// Текст запроса к БД
-		$sql = "SELECT image FROM product WHERE id = ".$id;
+		// Путь к папке с товарами
+		$path = '/upload/images/products/';
 
-		$result = $db->query($sql);
-		$result->setFetchMode(PDO::FETCH_ASSOC);
+		// Путь к изображению товара
+		$pathToProductImage = $path . $id . '.jpg';
 
-		$image = implode($result->fetch());
-		return $image;
+		if(file_exists($_SERVER['DOCUMENT_ROOT'].$pathToProductImage)) {
+			// Если изображение существует, вернем его
+			return $pathToProductImage;
+		}
+
+		// Возвращаем путь изображения пустышки
+		return $path . $noImage;
 	}
 }

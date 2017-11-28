@@ -18,7 +18,21 @@ class News {
 			$newsItem = $result->fetch();
 
 			return $newsItem;
-			
+		}
+	}
+
+	public static function getNewsCategoryById($id) {
+		$id = intval($id);
+
+		if($id) {
+			$db = Db::getConnection();
+
+			$result = $db->query('SELECT name FROM news_category WHERE id='.$id);
+			$result->setFetchMode(PDO::FETCH_ASSOC);
+
+			$newsCategory = $result->fetch();
+
+			return $newsCategory;
 		}
 	}
 

@@ -1,120 +1,45 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<!--
-Design by Free CSS Templates
-http://www.freecsstemplates.org
-Released for free under a Creative Commons Attribution 2.5 License
+<?php include(ROOT.'/views/layouts/header.php'); ?>
 
-Title      : Culinary
-Version    : 1.0
-Released   : 20100218
-Description: A two-column fixed-width template suitable for small websites.
+<section>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-3">
+        <div class="left-sidebar">
+          <h2>Каталог товаров</h2>
+          <div class="panel-group category-products">
 
--->
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="content-type" content="text/html; charset=utf-8" />
-<title>Culinary by Free Css Templates</title>
-<meta name="keywords" content="" />
-<meta name="description" content="" />
-<link href="/template/css/default.css" rel="stylesheet" type="text/css" />
-</head>
-<body>
-<div id="wrapper">
-  <div id="header">
-    <div id="logo">
-      <h1><a href="#">Culinary</a></h1>
-      <h2><a href="http://www.freecsstemplates.org/">Template By Free CSS Templates</a></h2>
-    </div>
-    <!-- end div#logo -->
-  </div>
-  <!-- end div#header -->
-  <div id="menu">
-    <ul>
-      <li><a href="/news/">Home</a></li>
-      <li class="active"><a href="#">Products</a></li>
-      <li><a href="#">About</a></li>
-      <li><a href="#">Contact</a></li>
-    </ul>
-  </div>
-  <!-- end div#menu -->
-  <div id="page">
-    <div id="page-bgtop">
-      <div id="content">
+            <?php foreach($categories as $categoryItem): ?>
+              <div class="panel panel-default">
+                <div class="panel-heading">
+                  <h4 class="panel-title"><a href="/category/<?php echo $categoryItem['id']; ?>"><?php echo $categoryItem['name']; ?></a></h4>
+                </div>
+              </div>
+            <?php endforeach; ?>
 
-        <div class="post">
-          <h2 class="title"><a href="#"><?php echo $newsList['title']; ?></a></h2>
-          <p class="byline"><strong style='font-size:20px; color:red; padding-right:25px;'><?php echo $newsList['author_name']; ?></strong> by <?php echo $newsList['date']; ?></p>
-          <div class="entry">
-            <p><?php echo $newsList['content']; ?></p>
-          </div>
-          <div class="meta">
-            <p class="links"><a href="/news/" class="comments">Back to all news</a></p>
           </div>
         </div>
-
-
       </div>
-      <!-- end div#content -->
-      <div id="sidebar">
-        <ul>
-          <li id="search">
-            <h2 class="search">Search</h2>
-            <form method="get" action="">
-              <fieldset>
-              <input type="text" id="search-text" name="s" value="" />
-              <input type="submit" id="search-submit" value="Search" />
-              </fieldset>
-            </form>
-          </li>
-          <li>
-            <h2 class="categories">Lorem Ipsum</h2>
-            <ul>
-              <li><a href="#">Fusce dui neque fringilla</a></li>
-              <li><a href="#">Eget tempor eget nonummy</a></li>
-              <li><a href="#">Magna lacus bibendum mauris</a></li>
-              <li><a href="#">Nec metus sed donec</a></li>
-              <li><a href="#">Magna lacus bibendum mauris</a></li>
-              <li><a href="#">Velit semper nisi molestie</a></li>
-              <li><a href="#">Eget tempor eget nonummy</a></li>
-            </ul>
-          </li>
-          <li>
-            <h2>Volutpat Dolore</h2>
-            <ul>
-              <li><a href="#">Nec metus sed donec</a></li>
-              <li><a href="#">Magna lacus bibendum mauris</a></li>
-              <li><a href="#">Velit semper nisi molestie</a></li>
-              <li><a href="#">Eget tempor eget nonummy</a></li>
-              <li><a href="#">Nec metus sed donec</a></li>
-              <li><a href="#">Magna lacus bibendum mauris</a></li>
-              <li><a href="#">Velit semper nisi molestie</a></li>
-            </ul>
-          </li>
-          <li>
-            <h2>Bebindum Mauris </h2>
-            <ul>
-              <li><a href="#">Nec metus sed donec</a></li>
-              <li><a href="#">Magna lacus bibendum mauris</a></li>
-              <li><a href="#">Velit semper nisi molestie</a></li>
-              <li><a href="#">Eget tempor eget nonummy</a></li>
-              <li><a href="#">Nec metus sed donec</a></li>
-              <li><a href="#">Velit semper nisi molestie</a></li>
-              <li><a href="#">Eget tempor eget nonummy</a></li>
-              <li><a href="#">Velit semper nisi molestie</a></li>
-            </ul>
-          </li>
-        </ul>
+
+      <div class="col-sm-7 padding-right">
+        <div class="features_items"><!--features_items-->
+          <h2 class="title text-center">Новость в категории: <?php echo $news_category['name']; ?></h2>
+
+          <div class="post">
+            <h2 class="title title_news"><a href="#"><?php echo $newsList['title']; ?></a></h2>
+            <p class="byline">Posted by: <strong style='font-size:20px; color:#FE980F; padding-right:25px;'><?php echo $newsList['author_name']; ?></strong> in: <?php echo $newsList['date']; ?></p>
+            <div class="entry">
+              <p><?php echo $newsList['content']; ?></p>
+            </div>
+            <div class="meta">
+              <p class="links"><a href="/news/" class="comments">Back to all news</a></p>
+            </div>
+          </div>
+
+        </div>
       </div>
-      <!-- end div#sidebar -->
-      <div style="clear: both; height: 1px"></div>
+
     </div>
   </div>
-  <!-- end div#page -->
-  <div id="footer">
-    <p>Copyright &copy; 2007 Culinary. All Rights Reserved. Designed by <a href="http://www.freecsstemplates.org/">Free CSS Templates</a>.&nbsp;&nbsp;<a href="#">Privacy Policy</a> | <a href="#">Terms of Use</a></p>
-  </div>
-  <!-- end div#footer -->
-</div>
-<!-- end div#wrapper -->
-</body>
-</html>
+</section>
+
+<?php include(ROOT.'/views/layouts/footer.php'); ?>

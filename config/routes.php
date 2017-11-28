@@ -41,6 +41,8 @@
 
 		'contacts'                        => 'site/contact',
 
+		'about'                           => 'site/about',
+
 		''                                => 'site/index', //actionIndex в SiteController
 
 	);

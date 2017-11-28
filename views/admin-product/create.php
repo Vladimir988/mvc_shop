@@ -67,6 +67,9 @@
 
 						<br/><br/>
 
+						<p>Количество товара доступного на складе</p>
+						<input type="text" name="quantity" placeholder="" value="<?php if(isset($options)){echo $options['quantity'];} ?>">
+
 						<p>Новинка</p>
 						<select name="is_new">
 							<option value="1" selected="selected">Да</option>

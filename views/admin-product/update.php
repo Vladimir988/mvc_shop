@@ -44,9 +44,7 @@
 						<select name="category_id">
 							<?php if (is_array($categoriesList)): ?>
 								<?php foreach ($categoriesList as $category): ?>
-									<option value="<?php echo $category['id']; ?>">
-										<?php echo $category['name']; ?>
-									</option>
+									<option value="<?php echo $category['id']; ?>" <?php if($category['id'] == $product['category_id']) echo ' selected="selected"' ?>><?php echo $category['name']; ?></option>
 								<?php endforeach; ?>
 							<?php endif; ?>
 						</select>
@@ -57,7 +55,8 @@
 						<input type="text" name="brand" placeholder="" value="<?php echo $product['brand']; ?>">
 
 						<p>Изображение товара</p>
-						<div class="update_img_wrapp"><img src="<?php if(Product::getImage($product['id'])){echo Product::getImage($product['id']);} else {echo '/template/images/home/product_default.jpg';} ?>" width="200" alt=""></div>
+						<p><?php echo Product::getImage($product['id']); ?></p>
+						<div class="update_img_wrapp"><img src="<?php echo Product::getImage($product['id']); ?>" width="200" alt=""></div>
 						<input type="file" name="image" placeholder="" value="<?php echo $product['image']; ?>">
 
 						<p>Наличие на складе</p>
@@ -67,6 +66,9 @@
 						</select>
 
 						<br/><br/>
+
+						<p>Количество товара доступного на складе</p>
+						<input type="text" name="quantity" placeholder="" value="<?php echo $product['quantity']; ?>">
 
 						<p>Новинка</p>
 						<select name="is_new">

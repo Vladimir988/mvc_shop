@@ -2572,3 +2572,56 @@ input.btn.btn-default {
   text-align: center;
   margin: 10px 0;
 }
+.ul_admin {
+  padding-left: 0;
+}
+.ul_admin li {
+  padding-bottom: 10px;
+}
+.ul_admin li a {
+  position: relative;
+  padding-left: 30px;
+}
+.ul_admin li a::before {
+  content: '\f044';
+  font-family: "FontAwesome";
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 3px;
+  line-height: 1;
+  font-size: 18px;
+  transition: .4s;
+  color: #428bca;
+}
+.ul_admin li a:hover::before {
+  left: 7px;
+}
+.ul_admin li a {
+  font-size: 16px;
+}
+h2.title_news {
+  text-transform: capitalize;
+  font-size: 16px;
+}
+h2.title_news a {
+  color: #FE980F;
+  transition: .5s;
+}
+h2.title_news a:hover {
+  color: #000;
+}
+.post .meta .links {
+  margin-bottom: 20px;
+}
+.post .meta .links a {
+  background: #FE980F;
+  padding: 4px 30px;
+  line-height: 1;
+  transition: .5s;
+  color: #fff;
+}
+.post .meta .links a:hover {
+  background: #000;
+  color: #fff;
+}

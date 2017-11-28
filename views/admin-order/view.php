@@ -72,7 +72,7 @@
 						<td><?php echo $product['brand']; ?></td>
 						<td><?php echo $product['price']; ?></td>
 						<td><?php echo $productsQuantity[$product['id']]; ?></td>
-						<td><?php echo $product['availability']; ?></td>
+						<td><?php echo $product['quantity']; ?></td>
 					</tr>
 				<?php endforeach; ?>
 			</table>
