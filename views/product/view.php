@@ -29,22 +29,21 @@
 						<div class="row">
 							<div class="col-sm-5">
 								<div class="view-product">
-									<img src="/template/images/product-details/1.jpg" alt="" />
+									<img src="<?php echo Product::getImage($product['id']); ?>" alt="" />
 								</div>
 							</div>
 							<div class="col-sm-7">
 								<div class="product-information"><!--/product-information-->
-									<img src="/template/images/product-details/new.jpg" class="newarrival" alt="" />
+									<?php if($product['is_new']): ?>
+										<img src="/template/images/product-details/new.jpg" class="newarrival" alt="" />
+									<?php endif; ?>
 									<h2><?php echo $product['name']; ?></h2>
 									<p>Код товара: <?php echo $product['code']; ?></p>
 									<span>
 										<span>US $<?php echo $product['price']; ?></span>
 										<label>Количество:</label>
-										<input type="text" value="3" />
-										<button type="button" class="btn btn-fefault cart">
-											<i class="fa fa-shopping-cart"></i>
-											В корзину
-										</button>
+										<input type="text" value="1" />
+										<a href="/cart/add/<?php echo $product['id']; ?>" data-id="<?php echo $product['id']; ?>" class="btn btn-default add-to-cart singl-product-add"><i class="fa fa-shopping-cart"></i>В корзину</a>
 									</span>
 									<p><b>Наличие:</b> <?php if($product['status'] == 1) {echo "На складе";}else{echo "Нет в наличии";} ?></p>
 									<p><b>Состояние:</b> Новое</p>

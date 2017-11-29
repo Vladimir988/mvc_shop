@@ -1,13 +1,18 @@
 <?php
 
 class CatalogController {
-	public function actionIndex() {
+	public function actionIndex($page = 1) {
 
 		$categories = array();
 		$categories = Category::getCategoriesList();
 
 		$latestProduct = array();
 		$latestProduct = Product::getLatestProducts();
+
+		$total = count($latestProduct);
+		
+		// Создаем объект Pagination - постарничная навигация
+		$pagination = new Pagination($total, $page, Product::SHOW_BY_DEFAULT, 'page-');
 
 		require_once(ROOT.'/views/catalog/index.php');
 		return true;

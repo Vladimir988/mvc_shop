@@ -7,6 +7,9 @@
 				<h3>Привет, <?php echo $user['name']; ?>!</h3>
 				<ul>
 					<li><a href="/user/edit">Редактировать данные</a></li>
+					<?php if(AdminBase::checkAdmin()): ?>
+						<li><a href="/admin">Админ панель</a></li>
+					<?php endif; ?>
 				</ul>
 			</div>
 		</div>
